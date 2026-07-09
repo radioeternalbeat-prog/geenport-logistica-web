@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREENPORT - Asesoría de Comercio Exterior y Logística 4PL</title>
+    <meta name="description" content="Soluciones logísticas integrales 4PL, transporte internacional, aduanas y bodegaje con GREENPORT. Optimizamos su cadena de suministro.">
+    <meta name="keywords" content="GREENPORT, logística 4PL, comercio exterior, transporte internacional, agencia de aduanas, Chile, consolidación LCL, FCL, TODOCOMEX">
+    <meta property="og:title" content="GREENPORT - Asesoría de Comercio Exterior y Logística 4PL">
+    <meta property="og:description" content="Potenciamos su estrategia de comercio exterior con asesoría experta y tecnología 4PL.">
+    <meta property="og:image" content="assets/logo_nuevo.webp">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind for rapid layout utilities (standardizing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00D2BE', /* Petronas Teal */
+                        secondary: '#C0C0C0', /* AMG Silver */
+                        accent: '#E50000', /* Ineos Red */
+                        dark: '#111215', /* Carbon Black */
+                        'dark-lighter': '#1A1D24',
+                        'glass-bg': 'rgba(17, 18, 21, 0.7)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* CSS PERSONALIZADO PREMIUM (MERCEDES AMG F1 THEME) */
+        :root {
+            --primary: #00D2BE;
+            --secondary: #C0C0C0;
+            --accent: #E50000;
+            --bg-dark: #111215;
+            --bg-body: #0A0B0E;
+        }
+
+        * { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--bg-body);
+            color: #cbd5e1;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animated Background */
+        .page-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(0, 210, 142, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+
+        .mesh-grid {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        /* Sticky Nav Enhancement */
+        header.scrolled {
+            background: rgba(4, 30, 40, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 210, 142, 0.3);
+            padding: 10px 0;
+        }
+
+        /* Titles Styling */
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            border-left: 8px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 3rem;
+            color: white;
+            line-height: 1;
+        }
+        
+        .section-title span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* FAQ Expansion Logic */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            font-size: 1rem;
+        }
+        .premium-card.active .faq-answer {
+            max-height: 500px; /* enough for text */
+            opacity: 1;
+            margin-top: 1.5rem;
+        }
+        .premium-card.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        .premium-card.active {
+            border-color: rgba(0, 210, 142, 0.5) !important;
+            background: rgba(17, 18, 21, 0.7) !important;
+            backdrop-filter: blur(12px) !important;
+            box-shadow: 0 15px 30px rgba(0, 210, 142, 0.2) !important;
+            transform: translateY(-5px) !important;
+        }
+
+        /* 3D Float Animation & Logo Enhancement */
+        .logo-enhance {
+            filter: 
+                drop-shadow(0 0 8px rgba(0,210,190,0.4))
+                drop-shadow(0 0 20px rgba(0,210,190,0.2))
+                drop-shadow(0 8px 30px rgba(0,0,0,0.5))
+                drop-shadow(0 2px 4px rgba(0,0,0,0.8))
+                brightness(1.1) contrast(1.05) saturate(1.15) !important;
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+        .logo-enhance:hover {
+            filter: 
+                drop-shadow(0 0 12px rgba(0,210,190,0.6))
+                drop-shadow(0 0 35px rgba(0,210,190,0.3))
+                drop-shadow(0 10px 40px rgba(0,0,0,0.6))
+                drop-shadow(0 2px 6px rgba(0,0,0,0.9))
+                brightness(1.2) contrast(1.1) saturate(1.25) !important;
+        }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* WhatsApp Button (Zulueta Inspired) */
+        .wa-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .wa-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Accordion Styling (Zulueta Inspired) */
+        .accordion-item {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        .accordion-header {
+            cursor: pointer;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.3s ease;
+        }
+        .accordion-header:hover { color: var(--primary); }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px;
+            padding-bottom: 30px;
+            transition: max-height 1s cubic-bezier(1, 0, 1, 0);
+        }
+        .accordion-item.active .chevron { transform: rotate(180deg); color: var(--primary); }
+
+        /* Custom Cards */
+        .premium-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        .premium-card:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: rgba(0, 210, 142, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+        }
+        
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--bg-dark);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 210, 142, 0.2);
+        }
+        
+        /* 3D Inset Icon Box para Proceso */
+        .icon-3d-inset {
+            background: rgba(4, 30, 40, 0.6) !important;
+            color: var(--primary) !important;
+            border: 1px solid rgba(0, 210, 142, 0.25);
+            /* Sombra interna para hundir la caja y dar relieve 3D */
+            box-shadow: 
+                inset 6px 6px 12px rgba(0, 0, 0, 0.8), 
+                inset -4px -4px 8px rgba(255, 255, 255, 0.05),
+                0 6px 15px rgba(0, 0, 0, 0.4) !important;
+            /* Sombra en el ícono para que resalte dentro del hundimiento */
+            filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.6));
+            transition: all 0.3s ease;
+        }
+        .premium-card:hover .icon-3d-inset {
+            box-shadow: 
+                inset 8px 8px 15px rgba(0, 0, 0, 0.9), 
+                inset -4px -4px 8px rgba(0, 210, 142, 0.2),
+                0 0 20px rgba(0, 210, 142, 0.3) !important;
+            color: var(--secondary) !important;
+        }
+
+        /* Image Box with Glow */
+        .img-container {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .img-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-dark), transparent);
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        /* Contact Form */
+        .form-input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 210, 142, 0.2);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-dark);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 210, 142, 0.3);
+        }
+        .btn-premium:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 210, 142, 0.5);
+        }
+
+        #header.scrolled {
+            background: rgba(10, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #header.scrolled img {
+            height: 4rem; /* h-16 equivalent */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-bg"></div>
+    <div class="mesh-grid"></div>
+
+    <!-- HEADER / NAV -->
+    <header id="header" class="fixed top-0 left-0 w-full z-[100] py-6 transition-all duration-500">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-4">
+                <img src="assets/logo_transparente.webp" alt="GREENPORT - Logística Integral" class="logo-enhance h-24 transition-all duration-300 object-contain hover:scale-[1.05]">
+            </a>
+            <nav class="hidden lg:flex items-center gap-8 xl:gap-10">
+                <a href="#home" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Inicio</a>
+                <a href="#services" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Servicios</a>
+                <a href="#process" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Proceso</a>
+                <a href="#about" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Nosotros</a>
+                <a href="#partners" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Socios</a>
+                <a href="#faq" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">FAQ</a>
+                <a href="#contact" class="text-white hover:text-primary transition-colors font-semibold uppercase text-sm tracking-widest">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden md:block btn-premium" style="padding: 12px 24px; font-size: 0.75rem;">Solicitar Cotización</a>
+                <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-dark-lighter z-[200] translate-x-full transition-transform duration-500 lg:hidden">
+        <div class="flex justify-between items-center p-6 border-b border-white/5">
+            <img src="assets/logo_transparente.webp" alt="GREENPORT" class="logo-enhance h-20 object-contain">
+            <button id="menu-close" class="text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 p-10 mt-10">
+            <a href="#home" class="text-4xl font-black text-white hover:text-primary menu-link">Inicio</a>
+            <a href="#services" class="text-4xl font-black text-white hover:text-primary menu-link">Servicios</a>
+            <a href="#process" class="text-4xl font-black text-white hover:text-primary menu-link">Proceso</a>
+            <a href="#about" class="text-4xl font-black text-white hover:text-primary menu-link">Nosotros</a>
+            <a href="#partners" class="text-4xl font-black text-white hover:text-primary menu-link">Socios</a>
+            <a href="#faq" class="text-4xl font-black text-white hover:text-primary menu-link">FAQ</a>
+            <a href="#contact" class="text-4xl font-black text-white hover:text-primary menu-link">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="text-left">
+                <div class="inline-block bg-primary/10 text-primary border border-primary/20 px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.3em] mb-6 fade-in-up">Operador Logístico 4PL Integral</div>
+                <h1 class="text-6xl md:text-8xl font-black text-white leading-[0.9] mb-8 font-display tracking-tighter fade-in-up delay-100">
+                    SOLUCIONES <span class="text-primary italic font-light">LOGÍSTICAS</span>
+                </h1>
+                <p class="text-xl text-slate-400 mb-10 max-w-xl font-light leading-relaxed fade-in-up delay-200">
+                    Potenciamos tu estrategia de comercio exterior con asesoría experta y tecnología 4PL. Conectamos tu negocio con el mundo con precisión y seguridad.
+                </p>
+                <div class="flex flex-wrap gap-6 fade-in-up delay-300">
+                    <a href="#contact" class="btn-premium">Solicitar Cotización</a>
+                    <a href="#services" class="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase text-sm hover:bg-white/5 transition-all">Ver Servicios</a>
+                </div>
+            </div>
+            <div class="relative hidden lg:block fade-in-up delay-200 group">
+                <div class="absolute -inset-20 bg-primary/20 rounded-full blur-[140px] group-hover:bg-primary/30 transition-all duration-700 animate-pulse"></div>
+                <img src="assets/logo_transparente.webp" alt="Logo GREENPORT Logística Global 4PL" class="logo-enhance w-full h-auto float-anim hover:scale-[1.03] transition-all duration-500 will-change-transform">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SERVICES ACCORDION -->
+    <section id="services" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Nuestros <span>Servicios</span></h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <!-- Text Sidebar -->
+                <div class="lg:col-span-5">
+                    <p class="text-2xl font-light text-slate-300 leading-relaxed mb-8">
+                        Ofrecemos un <strong>servicio integral</strong> que abarca todo el ciclo de comercio exterior, eliminando fricciones y optimizando costos operativos.
+                    </p>
+                    <div class="glass p-8 rounded-3xl border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                        <h4 class="text-primary font-bold text-xl mb-4 flex items-center gap-3"><i class="fa-solid fa-star"></i> Ventaja GREENPORT</h4>
+                        <p class="text-sm text-slate-400 font-light">Combinamos la experiencia de asesoría en COMEX con la agilidad de un forwarder experto.</p>
+                    </div>
+                    
+
+                </div>
+
+                <!-- Accordion Content -->
+                <div class="lg:col-span-7">
+                    <div class="accordion-container">
+                        <!-- Item 1 -->
+                        <div class="accordion-item active">
+                            <div class="accordion-header">
+                                <h3 class="text-lg md:text-xl font-bold uppercase tracking-tight text-white">Transporte Internacional (Aéreo & Marítimo)</h3>
+                                <i class="fa-solid fa-chevron-down chevron text-sm transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="glass p-6 rounded-3xl border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)] mt-2 mb-6">
+                                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Consolidación de carga LCL/FCL</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Vuelos Tier 1 con itinerarios frecuentes</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Expertos en HAZMAT y DGD</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Carga sobredimensionada (Break Bulk)</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="text-lg md:text-xl font-bold uppercase tracking-tight text-white">Agenciamiento de Aduanas & 4PL</h3>
+                                <i class="fa-solid fa-chevron-down chevron text-sm transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="glass p-6 rounded-3xl border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)] mt-2 mb-6">
+                                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Despacho aduanero ágil e integral</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Sistemas NLS con integración EDI/API</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Asesoría técnica legal aduanera</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Reportes estadísticos en línea</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="text-lg md:text-xl font-bold uppercase tracking-tight text-white">Almacenaje y Distribución Física Nacional</h3>
+                                <i class="fa-solid fa-chevron-down chevron text-sm transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="glass p-6 rounded-3xl border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)] mt-2 mb-6">
+                                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Bodegaje especializado y seguro</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Gestión de inventarios en tiempo real</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Consolidación y desconsolidación</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Distribución estratégica de última milla</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="text-lg md:text-xl font-bold uppercase tracking-tight text-white">Logística Sectorial Especializada</h3>
+                                <i class="fa-solid fa-chevron-down chevron text-sm transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="glass p-6 rounded-3xl border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)] mt-2 mb-6">
+                                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Minería: Logística en sitios remotos</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Alimentos: Cadena de frío e inspección</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">High-Tech: Distribución de alto valor</span></li>
+                                        <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> <span class="text-sm">Retail: Logística inversa y eCommerce</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WORK PROCESS SECTION -->
+    <section id="process" class="py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Nuestro <span>Proceso</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="relative group">
+                    <div class="absolute -top-4 -left-4 text-8xl font-black text-white/5 group-hover:text-primary/10 transition-colors pointer-events-none">01</div>
+                    <div class="premium-card p-10 rounded-3xl h-full relative z-10">
+                        <div class="icon-box icon-3d-inset"><i class="fa-solid fa-comments"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase">Consulta Inicial</h3>
+                        <p class="text-sm text-slate-400 font-light">Analizamos sus necesidades específicas en las operaciones, evaluamos y detectamos los puntos críticos en su cadena logística.</p>
+                    </div>
+                    <!-- Connector line for desktop -->
+                    <div class="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-primary/30 to-transparent z-0"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative group">
+                    <div class="absolute -top-4 -left-4 text-8xl font-black text-white/5 group-hover:text-primary/10 transition-colors pointer-events-none">02</div>
+                    <div class="premium-card p-10 rounded-3xl h-full relative z-10">
+                        <div class="icon-box icon-3d-inset"><i class="fa-solid fa-chess"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase">Diseño de Estrategia</h3>
+                        <p class="text-sm text-slate-400 font-light">Diseñamos una solución 4PL a medida, optimizando rutas, costos y tiempos de tránsito nacional e internacional.</p>
+                    </div>
+                    <div class="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-primary/30 to-transparent z-0"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative group">
+                    <div class="absolute -top-4 -left-4 text-8xl font-black text-white/5 group-hover:text-primary/10 transition-colors pointer-events-none">03</div>
+                    <div class="premium-card p-10 rounded-3xl h-full relative z-10">
+                        <div class="icon-box icon-3d-inset"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase">Ejecución & Control</h3>
+                        <p class="text-sm text-slate-400 font-light">Implementamos la operación con seguimiento en tiempo real y gestión aduanera proactiva.</p>
+                    </div>
+                    <div class="hidden lg:block absolute top-1/2 -right-4 w-8 h-[2px] bg-gradient-to-r from-primary/30 to-transparent z-0"></div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative group">
+                    <div class="absolute -top-4 -left-4 text-8xl font-black text-white/5 group-hover:text-primary/10 transition-colors pointer-events-none">04</div>
+                    <div class="premium-card p-10 rounded-3xl h-full relative z-10">
+                        <div class="icon-box icon-3d-inset"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-4 uppercase">Optimización Continua</h3>
+                        <p class="text-sm text-slate-400 font-light">Evaluamos resultados y proponemos mejoras constantes para escalar su negocio globalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS / STRATEGIC PARTNERSHIP SECTION -->
+    <section id="about" class="py-24 bg-dark relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="premium-card p-12 rounded-[3rem] border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+                    <!-- GREENPORT (Izquierda) -->
+                    <div class="lg:w-1/4 flex justify-center lg:justify-start">
+                        <div class="inline-block rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300">
+                            <img src="assets/logo_transparente.webp" alt="GREENPORT Logo" class="logo-enhance w-full max-w-[150px] md:max-w-[180px] object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- TEXTO (Centro) -->
+                    <div class="lg:w-2/4 text-center lg:text-left">
+                        <h2 class="section-title text-left !mb-4 !text-4xl">Socio <span>Estratégico</span></h2>
+                        <h3 class="text-2xl font-black text-white mb-6 uppercase tracking-[0.2em]">GREENPORT & TODOCOMEX</h3>
+                        <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-8">
+                            Nuestra alianza con <span class="text-white font-semibold">TODOCOMEX</span> potencia nuestra capacidad operativa, integrando servicios aduaneros de élite con nuestra logística 4PL de vanguardia. Juntos, eliminamos las barreras del comercio exterior.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="glass px-6 py-3 border-white/10 rounded-full text-xs font-bold text-white uppercase tracking-wider hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">Integración EDI/API</span>
+                            <span class="glass px-6 py-3 border-white/10 rounded-full text-xs font-bold text-white uppercase tracking-wider hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">Soporte 24/7</span>
+                            <span class="glass px-6 py-3 border-white/10 rounded-full text-xs font-bold text-white uppercase tracking-wider hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">Cumplimiento Global</span>
+                        </div>
+                    </div>
+
+                    <!-- TODOCOMEX (Derecha) -->
+                    <div class="lg:w-1/4 flex justify-center lg:justify-end">
+                        <div class="glass p-8 rounded-full inline-flex items-center justify-center w-48 h-48 md:w-56 md:h-56 border border-white/10 shadow-[0_0_30px_rgba(0,210,190,0.1)] hover:border-primary/40 transition-all duration-500 group">
+                            <img src="assets/logo_todocomex_nuevo_transparente.webp" alt="TODOCOMEX Logo" class="logo-enhance w-full h-full object-contain group-hover:scale-105 transition-all duration-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RED DE SOCIOS AGENTES DE ADUANAS SECTION -->
+    <section id="partners" class="py-24 bg-dark-lighter relative border-t border-b border-white/5">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-left !mb-6">Red de <span>Socios</span></h2>
+            <p class="text-lg md:text-xl text-slate-300 font-light mb-10 border-l-2 border-primary/30 pl-4 ml-2 uppercase tracking-widest hidden md:block">
+                Agentes de aduanas en alianza operativa a nivel nacional
+            </p>
+            
+            <div class="flex flex-wrap justify-center lg:justify-start gap-4 lg:gap-6 max-w-5xl mx-auto lg:mx-0 pl-2">
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">Sebastián Mohor Merello</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">Miriam Olivares Irribarren</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">José Antonio González Jaque</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">Juan Pablo Reyes García-Huidobro</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">Gonzalo Lillo Ponce</span>
+                </div>
+                <div class="glass px-8 py-4 rounded-full flex items-center gap-3 border-white/10 hover:border-primary/50 hover:bg-white/5 transition-all cursor-default hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,210,142,0.15)]">
+                    <i class="fa-solid fa-user-tie text-primary"></i>
+                    <span class="text-slate-300 font-medium text-sm md:text-base">Jorge Mac-Ginty</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITION GRID -->
+    <section class="py-32 bg-dark/30">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="premium-card glass p-10 rounded-3xl border-white/10 hover:border-primary/50 hover:!bg-white/5 transition-all cursor-default hover:!translate-y-[-5px] hover:!shadow-[0_15px_30px_rgba(0,210,142,0.2)]">
+                    <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">Atención 24/7</h3>
+                    <p class="text-slate-400 font-light">Soporte estratégico ininterrumpido. Un equipo de expertos disponible los 365 días del año para su tranquilidad.</p>
+                </div>
+                <div class="premium-card glass p-10 rounded-3xl border-white/10 hover:border-primary/50 hover:!bg-white/5 transition-all cursor-default hover:!translate-y-[-5px] hover:!shadow-[0_15px_30px_rgba(0,210,142,0.2)]">
+                    <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">Tecnología 4PL</h3>
+                    <p class="text-slate-400 font-light">Trazabilidad total de sus operaciones en tiempo real para el control absoluto.</p>
+                </div>
+                <div class="premium-card glass p-10 rounded-3xl border-white/10 hover:border-primary/50 hover:!bg-white/5 transition-all cursor-default hover:!translate-y-[-5px] hover:!shadow-[0_15px_30px_rgba(0,210,142,0.2)]">
+                    <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-4 uppercase">Alcance Global</h3>
+                    <p class="text-slate-400 font-light">Como socio estratégico de TODOCOMEX, ofrecemos soluciones de transporte marítimo, aéreo y terrestre, para una gestión integral de sus operaciones de Comex.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-32 bg-dark relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+            
+            <div class="space-y-4">
+                <div class="premium-card p-6 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/30 transition-all cursor-pointer group" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-wider">¿Qué diferencia a GREENPORT de un forwarder tradicional?</h3>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-slate-400 font-light leading-relaxed">
+                        A diferencia de un forwarder tradicional que solo gestiona el flete, GREENPORT actúa como tu socio estratégico 4PL. Supervisamos y gestionamos toda tu cadena de suministro, desde la planificación y aduanas hasta la entrega final, optimizando costos y tiempos mediante tecnología de punta y experiencia normativa.
+                    </div>
+                </div>
+                
+                <div class="premium-card p-6 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/30 transition-all cursor-pointer group" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-wider">¿Cómo funciona el modelo 4PL en mi empresa?</h3>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-slate-400 font-light leading-relaxed">
+                        Implementamos un sistema de gestión logística externo donde tomamos el control administrativo y operativo de tu cadena de suministro. Esto te permite externalizar la complejidad operativa a manos expertas, reduciendo riesgos y liberando a tu equipo para centrarse en el crecimiento del negocio principal.
+                    </div>
+                </div>
+
+                <div class="premium-card p-6 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/30 transition-all cursor-pointer group" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-wider">¿Tienen alcance global real?</h3>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform"></i>
+                    </div>
+                    <div class="faq-answer mt-4 text-slate-400 font-light leading-relaxed">
+                        Sí. Gracias a nuestra red global consolidada y alianzas estratégicas (incluyendo TODOCOMEX), cubrimos los principales puertos y epicentros económicos en los cinco continentes. Garantizamos que tu carga se movilice bajo las normativas internacionales de cada región, ofreciendo tranquilidad absoluta.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="glass p-12 lg:p-20 relative overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    <div>
+                        <h2 class="text-5xl font-black text-white uppercase mb-6 leading-none">Hablemos <span class="text-primary italic font-light">Hoy</span></h2>
+                        <p class="text-lg text-slate-400 font-light mb-12">Estamos listos para optimizar su logística. Solicite una asesoría hoy y recibirá respuesta en menos de 60 minutos.</p>
+                        
+                        <div class="flex flex-col gap-8">
+                            <div class="flex items-center gap-6">
+                                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary text-xl"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-black">Llamada Directa</p>
+                                    <p class="text-white font-bold text-lg">+56 9 7806 4517</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary text-xl"><i class="fa-solid fa-envelope"></i></div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-black">Email Corporativo</p>
+                                    <p class="text-white font-bold text-lg">contacto@greenport.cl</p>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Box Movido -->
+                            <div class="flex items-center gap-6 p-6 mt-4 premium-card border-primary/30 rounded-2xl bg-white/5">
+                                <div class="w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center text-accent text-3xl"><i class="fa-solid fa-clock"></i></div>
+                                <div>
+                                    <h4 class="text-white text-lg font-bold mb-1">Respuesta en &lt; 1 Hora</h4>
+                                    <p class="text-xs text-slate-400 uppercase tracking-widest mb-2">Garantía de cotización rápida</p>
+                                    <a href="https://wa.me/56978064517?text=Hola%20GREENPORT,%20necesito%20una%20cotizaci%C3%B3n" target="_blank" class="text-primary text-sm font-bold hover:text-white transition-colors">Vía WhatsApp →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="flex flex-col gap-6" onsubmit="event.preventDefault(); alert('Gracias por contactarnos. Te responderemos pronto.');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Nombre completo" name="nombre" class="form-input" required>
+                            <input type="email" placeholder="Email de contacto" name="email" class="form-input" required>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="tel" placeholder="Teléfono / WhatsApp" name="telefono" class="form-input" required>
+                            <input type="text" placeholder="Empresa / Organización" name="empresa" class="form-input" required>
+                        </div>
+                        <select class="form-input text-slate-400" name="servicio_interes" required>
+                            <option value="">¿En qué servicio está interesado?</option>
+                            <option value="transporte">Transporte Internacional</option>
+                            <option value="aduanas">Gestión Aduanera</option>
+                            <option value="almacenaje">Almacenaje y Distribución</option>
+                            <option value="otro">Asesoría Integral 4PL</option>
+                        </select>
+                        <textarea placeholder="Cuéntenos sobre su requerimiento..." name="mensaje" rows="4" class="form-input" required></textarea>
+                        <button type="submit" class="btn-premium w-full mt-4">Enviar Requerimiento</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFICES FOOTER -->
+    <footer class="py-20 bg-dark-lighter border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 gap-12 mb-20 text-center lg:text-left">
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest mb-6 flex items-center justify-center lg:justify-start gap-2">
+                        <span class="w-2 h-2 bg-red-400 rounded-full"></span> CHILE
+                    </h4>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">
+                        Cochrane 639 oficina 78, Edificio Puerto Principal, Valparaíso <br> Tél: +56 9 7806 4517 <br> E-mail: contacto@greenport.cl
+                    </p>
+                </div>
+            </div>
+            
+            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <img src="assets/logo_transparente.webp" alt="Logo" class="logo-enhance h-16 opacity-80 object-contain hover:opacity-100 transition-opacity">
+                    <p class="text-xs text-slate-600 font-medium tracking-tight">&copy; 2026 GREENPORT ASESORÍA DE COMERCIO EXTERIOR. Todos los derechos reservados.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-600 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-slate-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHARED ELEMENTS -->
+    <a href="https://wa.me/56978064517?text=Hola%20GREENPORT,%20necesito%20una%20cotizaci%C3%B3n" target="_blank" class="wa-button">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Sticky Header Script
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Zulueta-Style Accordion Script
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('translate-x-full');
+        };
+
+        menuClose.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Smooth Appearance for Cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+
+

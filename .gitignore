@@ -1,0 +1,15 @@
+# macOS system files
+.DS_Store
+._*
+
+# Python virtual environment
+venv/
+__pycache__/
+
+# Netlify local config
+.netlify/
+
+# IDE / Editor
+*.code-workspace
+.vscode/
+.idea/
